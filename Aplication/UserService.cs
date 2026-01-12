@@ -18,10 +18,11 @@ public class UserService : IUserInterface
     //Aqui eu injeto o banco de dados para poder ser usado
 
     public async Task<UserResponseDTO> CreateUserAsync(CreateUserDTO dto)
-    {
+    {   
         var user = new User
         {
-            Name = dto.Name
+            Name = dto.Name,
+            Password = dto.Password
         }; //Seta o Model como DTO
 
         _context.Users.Add(user);
@@ -30,7 +31,8 @@ public class UserService : IUserInterface
         return new UserResponseDTO
         {
             Id = user.Id,
-            Name = user.Name
+            Name = user.Name,
+
         }; //Retorna o DTO, uma funcao retorna dados (sem writeline)
     }
     
@@ -49,6 +51,48 @@ public class UserService : IUserInterface
             Data = DTO,
             TotalUsers = total
         }; //Retorna a lista da DTO, porem com um objeto ApiResponse
+    }
+
+    public async Task<LoginResponseDTO> LoginAsync(CreateUserDTO dto)
+    {
+
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Name == dto.Name);
+        if (user != null && user.Name == dto.Name && user.Password == dto.Password)
+        {
+            return new LoginResponseDTO
+            {
+                Success = true
+            };
+        }
+        else
+        {
+            return new LoginResponseDTO
+            {
+                Success = false
+            };
+        }
+    }
+
+    public async Task<LoginResponseDTO> DeleteAsync(DeletUserDTO dto)
+    {
+
+        var user = await _context.Users.FindAsync(dto.Id);
+        if (user != null)
+        {
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+            return new LoginResponseDTO
+            {
+                Success = true
+            };
+        }
+        else
+        {
+            return new LoginResponseDTO
+            {
+                Success = false
+            };
+        }
     }
 }
         

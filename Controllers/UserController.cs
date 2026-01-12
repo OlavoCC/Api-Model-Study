@@ -15,17 +15,40 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
-    [HttpPost]
+    [HttpPost("register")]
     public async Task<ActionResult<UserResponseDTO>> CreateUserAsync([FromBody] CreateUserDTO dto)
     {
-         var createdUser = await _userService.CreateUserAsync(dto); //Uso o metodo para mandar a dto
-         return Ok();
+        try
+        {
+            var createdUser = await _userService.CreateUserAsync(dto); //Uso o metodo para mandar a dto
+         return Ok(createdUser);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+         
     }
 
-    [HttpGet]
+    [HttpGet("list")]
     public async Task<ActionResult<IEnumerable<UserResponseDTO>>> GetAllUsers()
     {
         var users = await _userService.GetAllUsers(); //pego os dados
         return Ok(users);
     }
+
+    [HttpPost("login")]
+    public async Task<ActionResult<LoginResponseDTO>> LoginAsync([FromBody] CreateUserDTO dto)
+    {
+        var loginResponse = await _userService.LoginAsync(dto);
+        return Ok(loginResponse);
+    }
+
+    [HttpDelete("delete")]
+    public async Task<ActionResult<LoginResponseDTO>> DeleteAsync([FromBody] DeletUserDTO dto)
+    {
+        var DeleteResult = await _userService.DeleteAsync(dto);
+        return Ok(DeleteResult);
+    }
+    
 }

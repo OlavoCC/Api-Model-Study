@@ -102,3 +102,4 @@
 /home/contessotto/Documentos/Api/obj/Debug/net8.0/Api.pdb
 /home/contessotto/Documentos/Api/obj/Debug/net8.0/Api.genruntimeconfig.cache
 /home/contessotto/Documentos/Api/obj/Debug/net8.0/ref/Api.dll
+/home/contessotto/Documentos/Api/obj/Debug/net8.0/Api.sourcelink.json

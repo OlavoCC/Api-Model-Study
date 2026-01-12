@@ -9,7 +9,16 @@ public class AppDbContext : DbContext{
         
     }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.Name)
+            .IsUnique(); //Garante que o nome do usuario seja unico
+    }
+
     public DbSet<User> Users { get; set; } //Nova tabela do banco de dados
+
+
 }
 
 //Configuração do banco de dados
