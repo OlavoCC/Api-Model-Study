@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Api.Domain.Models;
 using System.Runtime.CompilerServices;
-using Api.Infrastructure.Interfaces;
+using Api.Application.Interfaces;
 using Api.Application;
 using Api.DTOs.User;
 
@@ -45,7 +45,7 @@ public class UserController : ControllerBase
     }
 
     [HttpDelete("delete")]
-    public async Task<ActionResult<LoginResponseDTO>> DeleteAsync([FromBody] DeletUserDTO dto)
+    public async Task<ActionResult<LoginResponseDTO>> DeleteAsync([FromBody] DeleteUserDTO dto)
     {
         var DeleteResult = await _userService.DeleteAsync(dto);
         return Ok(DeleteResult);

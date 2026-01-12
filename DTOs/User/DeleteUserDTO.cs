@@ -1,6 +1,6 @@
 namespace Api.DTOs.User;
 
-public class DeletUserDTO
+public class DeleteUserDTO
 {
     public int Id { get; set; }
 }

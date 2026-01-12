@@ -1,4 +1,4 @@
-namespace Api.Infrastructure.Response;
+namespace Api.Application.Response;
 
 public class ApiResponse<T>
 {

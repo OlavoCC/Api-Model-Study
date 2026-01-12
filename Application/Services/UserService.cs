@@ -1,9 +1,9 @@
 using System.Reflection.Metadata;
 using Api.Domain.Models;
 using Api.DTOs.User;
-using Api.Infrastructure.Response;
+using Api.Application.Response;
 using Api.Infrastructure.Data;
-using Api.Infrastructure.Interfaces;
+using Api.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Application;
@@ -73,7 +73,7 @@ public class UserService : IUserInterface
         }
     }
 
-    public async Task<LoginResponseDTO> DeleteAsync(DeletUserDTO dto)
+    public async Task<LoginResponseDTO> DeleteAsync(DeleteUserDTO dto)
     {
 
         var user = await _context.Users.FindAsync(dto.Id);
