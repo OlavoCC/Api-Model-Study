@@ -103,3 +103,11 @@
 /home/contessotto/Documentos/Api/obj/Debug/net8.0/Api.genruntimeconfig.cache
 /home/contessotto/Documentos/Api/obj/Debug/net8.0/ref/Api.dll
 /home/contessotto/Documentos/Api/obj/Debug/net8.0/Api.sourcelink.json
+/home/contessotto/Documentos/Api/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/contessotto/Documentos/Api/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/home/contessotto/Documentos/Api/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/contessotto/Documentos/Api/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/home/contessotto/Documentos/Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/home/contessotto/Documentos/Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/contessotto/Documentos/Api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/home/contessotto/Documentos/Api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll

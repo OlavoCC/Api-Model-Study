@@ -1,16 +1,18 @@
-using System.Reflection.Metadata;
+
 using Api.Domain.Models;
 using Api.DTOs.User;
 using Api.Application.Response;
 using Api.Infrastructure.Data;
 using Api.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Api.Application.Services;
 
 namespace Api.Application;
 
 public class UserService : IUserInterface
 {
     private readonly AppDbContext _context;
+    private readonly TokenService _tokenService = new(); //injeta a geracao da token 
     public UserService (AppDbContext context)
     {
         _context = context;
@@ -55,15 +57,16 @@ public class UserService : IUserInterface
 
     public async Task<LoginResponseDTO> LoginAsync(CreateUserDTO dto)
     {
-
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Name == dto.Name);
         if (user != null && user.Name == dto.Name && user.Password == dto.Password)
         {
             return new LoginResponseDTO
             {
-                Success = true
+                Success = true,
+                Token = _tokenService.CreateToken(user.Id, user.Name)   
             };
         }
+
         else
         {
             return new LoginResponseDTO

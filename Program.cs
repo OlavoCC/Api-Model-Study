@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Api.Infrastructure.Data;
 using Api.Application;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +14,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var jwtKey = "4d8f9a1c2e7b4f6a9d3e8c1b7a5f2e9d";
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+   options.TokenValidationParameters = new TokenValidationParameters
+   {
+     ValidateIssuer = false,
+     ValidateAudience = false,
+     ValidateLifetime = true,
+     ValidateIssuerSigningKey = true,
+     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),  
+   };
+}); 
+
 builder.Services.AddDbContext<AppDbContext>(Options => Options.UseNpgsql(
-    builder.Configuration.GetConnectionString("DefaultConnection"
+    builder.Configuration.GetConnectionString("DefaultConnection" //mostra onde está a string de conexão no appsettings.json
 )));
 builder.Services.AddScoped<UserService>(); //Permite injetar o service no controller
 
@@ -27,10 +44,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+app.UseAuthentication(); //Cria o usuario
+app.UseAuthorization(); //Verifica
 
 app.MapControllers();
-
 app.Run();
 
 //Para testar sem postman: http://localhost:5194/swagger/index.html
