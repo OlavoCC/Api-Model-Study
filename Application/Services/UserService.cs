@@ -12,10 +12,11 @@ namespace Api.Application;
 public class UserService : IUserInterface
 {
     private readonly AppDbContext _context;
-    private readonly TokenService _tokenService = new(); //injeta a geracao da token 
-    public UserService (AppDbContext context)
+    private readonly TokenService _tokenService;
+    public UserService (AppDbContext context, TokenService tokenService )
     {
         _context = context;
+        _tokenService = tokenService;
     }
     //Aqui eu injeto o banco de dados para poder ser usado
 
@@ -58,7 +59,7 @@ public class UserService : IUserInterface
     public async Task<LoginResponseDTO> LoginAsync(CreateUserDTO dto)
     {
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Name == dto.Name);
-        if (user != null && user.Name == dto.Name && user.Password == dto.Password)
+        if (user != null && user.Name == dto.Name && user.Password == dto.Password) //Correto eh usar hash na senha, adicionar depois
         {
             return new LoginResponseDTO
             {

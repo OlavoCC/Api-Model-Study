@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/contessotto/Documentos/Api/Api.csproj": {}
+    "/home/contessotto/Documents/Api-Model-Study/Api.csproj": {}
   },
   "projects": {
-    "/home/contessotto/Documentos/Api/Api.csproj": {
+    "/home/contessotto/Documents/Api-Model-Study/Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/contessotto/Documentos/Api/Api.csproj",
+        "projectUniqueName": "/home/contessotto/Documents/Api-Model-Study/Api.csproj",
         "projectName": "Api",
-        "projectPath": "/home/contessotto/Documentos/Api/Api.csproj",
+        "projectPath": "/home/contessotto/Documents/Api-Model-Study/Api.csproj",
         "packagesPath": "/home/contessotto/.nuget/packages/",
-        "outputPath": "/home/contessotto/Documentos/Api/obj/",
+        "outputPath": "/home/contessotto/Documents/Api-Model-Study/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/contessotto/.nuget/NuGet/NuGet.Config"
@@ -87,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.417/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

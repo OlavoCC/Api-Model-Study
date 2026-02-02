@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XI8IjSeaQ9M=",
+  "dgSpecHash": "aI82JCWXgEM=",
   "success": true,
-  "projectFilePath": "/home/contessotto/Documentos/Api/Api.csproj",
+  "projectFilePath": "/home/contessotto/Documents/Api-Model-Study/Api.csproj",
   "expectedPackageFiles": [
     "/home/contessotto/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/contessotto/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/8.0.4/microsoft.aspnetcore.authentication.jwtbearer.8.0.4.nupkg.sha512",
